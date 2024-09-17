@@ -1,0 +1,22 @@
+name: CI Pipeline
+
+on:
+  push: 
+    branches: main
+  schedule:
+    # Scheduled to run at 10:22 AM GMT (UTC)
+    - cron: '30 11 * * *'
+
+jobs:
+  build_and_deploy_for_android:
+    name: Build, Test, and Deploy for Android
+    runs-on: macos-latest
+    if: github.ref_name == 'main'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run
+        run: |
+          echo "android"
